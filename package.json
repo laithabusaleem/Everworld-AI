@@ -1,0 +1,26 @@
+{
+  "name": "everworld-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser-based sandbox for persistent societies of autonomous AI characters",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @everworld/engine && concurrently -n engine,server,web -c cyan,magenta,green \"npm run dev -w @everworld/engine\" \"npm run dev -w @everworld/server\" \"npm run dev -w @everworld/web\"",
+    "build": "npm run build -w @everworld/engine && npm run build -w @everworld/server && npm run build -w @everworld/web",
+    "test": "npm run test -w @everworld/engine && npm run test -w @everworld/server",
+    "typecheck": "npm run typecheck -w @everworld/engine && npm run typecheck -w @everworld/server && npm run typecheck -w @everworld/web",
+    "lint": "npm run typecheck",
+    "start": "npm run start -w @everworld/server"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.2"
+  },
+  "license": "MIT"
+}
